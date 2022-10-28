@@ -86,6 +86,60 @@ const menu = [
 
 // window.addEventListener("DOMContentLoaded", function () {});
 
+const place_btn = document.querySelector(".btn_choices");
+
+// const catBtn = menu.map(function (menuCat) {
+//   return `<button>${menuCat.category}</button>`;
+// });
+// place_btn.innerHTML = catBtn.join("");
+
+// const catBtn = menu.reduce(function (acc, menuCat) {
+//   if (!acc.includes(menuCat.category)) {
+//     acc.push(menuCat.category);
+//   }
+//   return acc;
+// });
+
+// const BtnAdd = catBtn.map(function (itbtn) {
+//   return `<button>${itbtn}</button>`;
+// });
+
+// place_btn.innerHTML = BtnAdd.join("");
+
+function displayMenuButtons() {
+  const categories = menu.reduce(
+    function (values, item) {
+      if (!values.includes(item.category)) {
+        values.push(item.category);
+      }
+      return values;
+    },
+    ["all"]
+  );
+
+  const categoryBtns = categories
+    .map(function (category) {
+      return `<button class="filter-btn" type="button" data-id="${category}">${category}</button>`;
+    })
+    .join("");
+
+  place_btn.innerHTML = categoryBtns;
+}
+
+displayMenuButtons();
+
+// const studentSurvey = students.reduce(function (survey, subject) {
+//   const favori = subject.favoriteSubject;
+//   console.log(favori);
+//   if (survey[favori]) {
+//     survey[favori]++;
+//   } else {
+//     survey[favori] = 1;
+//   }
+//   return survey;
+// }, {});
+// console.log(studentSurvey);
+
 const place_menu = document.querySelector(".menu_description");
 
 function insertMenu(tabMenu) {
@@ -102,44 +156,19 @@ function insertMenu(tabMenu) {
 
 place_menu.innerHTML = insertMenu(menu);
 
-let breakfast = [];
-breakfast = menu.filter(function (it) {
-  if (it.category === "breakfast") {
-    return it;
-  }
-});
-let lunch = [];
-lunch = menu.filter(function (it) {
-  if (it.category === "lunch") {
-    return it;
-  }
-});
-let shakes = [];
-shakes = menu.filter(function (it) {
-  if (it.category === "shakes") {
-    return it;
-  }
-});
-let steak = [];
-steak = menu.filter(function (it) {
-  if (it.category === "steak") {
-    return it;
-  }
-});
-
 const btns = document.querySelectorAll("button");
 btns.forEach(function (btn) {
   btn.addEventListener("click", function () {
-    if (btn.classList.contains("breakfast")) {
-      place_menu.innerHTML = insertMenu(breakfast);
-    } else if (btn.classList.contains("lunch")) {
-      place_menu.innerHTML = insertMenu(lunch);
-    } else if (btn.classList.contains("shakes")) {
-      place_menu.innerHTML = insertMenu(shakes);
-    } else if (btn.classList.contains("steak")) {
-      place_menu.innerHTML = insertMenu(steak);
-    } else {
+    if (btn.textContent === "all") {
       place_menu.innerHTML = insertMenu(menu);
+    } else {
+      console.log("wazaaaa");
+      console.log(btn.textContent);
+      const filterMenu = menu.filter(function (it) {
+        return it.category === btn.textContent;
+      });
+      console.log(filterMenu);
+      place_menu.innerHTML = insertMenu(filterMenu);
     }
   });
 });
