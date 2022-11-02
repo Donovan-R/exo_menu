@@ -72,39 +72,9 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
-// const articles_item = menu.map(function (it) {
-//   return `<article class="menu_item">
-//             <img class="item_photo" src="${it.img}"/>
-//             <h3 class="item_title">${it.title}</h3>
-//             <h2 class="item_price">${it.price}</h2>
-//             <p class="item_text">${it.desc}</p>
-//           </article>`;
-// });
 
-// console.log(articles_item);
-// place_menu.innerHTML = articles_item.join("");
-
-// window.addEventListener("DOMContentLoaded", function () {});
-
+// buttons
 const place_btn = document.querySelector(".btn_choices");
-
-// const catBtn = menu.map(function (menuCat) {
-//   return `<button>${menuCat.category}</button>`;
-// });
-// place_btn.innerHTML = catBtn.join("");
-
-// const catBtn = menu.reduce(function (acc, menuCat) {
-//   if (!acc.includes(menuCat.category)) {
-//     acc.push(menuCat.category);
-//   }
-//   return acc;
-// });
-
-// const BtnAdd = catBtn.map(function (itbtn) {
-//   return `<button>${itbtn}</button>`;
-// });
-
-// place_btn.innerHTML = BtnAdd.join("");
 
 function displayMenuButtons() {
   const categories = menu.reduce(
@@ -128,17 +98,7 @@ function displayMenuButtons() {
 
 displayMenuButtons();
 
-// const studentSurvey = students.reduce(function (survey, subject) {
-//   const favori = subject.favoriteSubject;
-//   console.log(favori);
-//   if (survey[favori]) {
-//     survey[favori]++;
-//   } else {
-//     survey[favori] = 1;
-//   }
-//   return survey;
-// }, {});
-// console.log(studentSurvey);
+// création du menu
 
 const place_menu = document.querySelector(".menu_description");
 
@@ -146,13 +106,17 @@ function insertMenu(tabMenu) {
   const articles_item = tabMenu.map(function (menuItem) {
     return `<article class="menu_item">
             <img class="item_photo" src="${menuItem.img}"/>
+            <div class="titPrice">
             <h3 class="item_title">${menuItem.title}</h3>
             <h2 class="item_price">${menuItem.price}</h2>
+            </div>
             <p class="item_text">${menuItem.desc}</p>
           </article>`;
   });
   return articles_item.join("");
 }
+
+// Affichage selon cat
 
 place_menu.innerHTML = insertMenu(menu);
 
@@ -162,12 +126,9 @@ btns.forEach(function (btn) {
     if (btn.textContent === "all") {
       place_menu.innerHTML = insertMenu(menu);
     } else {
-      console.log("wazaaaa");
-      console.log(btn.textContent);
       const filterMenu = menu.filter(function (it) {
         return it.category === btn.textContent;
       });
-      console.log(filterMenu);
       place_menu.innerHTML = insertMenu(filterMenu);
     }
   });

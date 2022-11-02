@@ -4,6 +4,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .menu {
@@ -12,6 +14,10 @@
 
 h1 {
   text-align: center;
+  text-transform: capitalize;
+  color: black;
+  font-size: 2rem;
+  padding-top: 1rem;
 }
 
 .btn_choices {
@@ -23,17 +29,28 @@ h1 {
 button {
   margin: 10px 15px;
   width: fit-content;
-  height: 20px;
+  min-width: 4rem;
+  height: 30px;
+  background: darkcyan;
+  border-radius: 5px 5px 5px 5px;
+  border: solid 2px darkmagenta;
+  text-transform: capitalize;
+  color: darkmagenta;
+}
+
+button:hover {
+  background: aqua;
 }
 
 .menu_description {
   display: grid;
   justify-items: center;
   row-gap: 2rem;
-  background-color: beige;
+  background-color: palevioletred;
   width: 90vw;
   margin: 0 auto;
   max-width: 1170px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 @media screen and (min-width: 800px) {
@@ -52,8 +69,22 @@ button {
   width: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 15px 15px;
+  border: solid 1px aqua;
 }
 
-/* .item_picture {
-  height: 20px;
-} */
+.titPrice {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.titPrice h3 {
+  text-shadow: -4px 4px 2px rgba(54, 231, 224, 0.6);
+}
+
+.titPrice h2 {
+  justify-self: end;
+  color: aqua;
+}
